@@ -18,8 +18,12 @@ When('I click flag button on topbar', () => {
     Homepage_PO.clickOnFlagButton();
 });
 
-When('I select {string}', (languageCode) => {
+When('I select language {string}', (languageCode) => {
     Homepage_PO.selectLanguage(languageCode);
+});
+
+When('I select currency {string}', (currency) => {
+    Homepage_PO.selectCurrency(currency);
 });
 
 When('I click Save button', () => {
@@ -28,4 +32,12 @@ When('I click Save button', () => {
 
 Then('I should be presented with {string} flag on topbar', (language) => {
     Homepage_PO.validateFlag(language);
+});
+
+Then('Default {string} should be translated to selected language', (cityFrom) => {
+    Homepage_PO.validateCityFrom(cityFrom);
+});
+
+Then('I should be presented with {string}', (currencyCode) => {
+    Homepage_PO.validateCurrencyCode(currencyCode);
 });

@@ -8,7 +8,9 @@ class Homepage_PO extends Base_PO {
         loggedInUser: () => cy.get('[data-test="AccountMenuButton"]'),
         topBarFlagButton: () => cy.get('[data-test="RegionalSettingsButton"]'),
         languageSelect: () => cy.get('[data-test="LanguageSelect"]'),
-        saveButton: () => cy.get('[data-test="SubmitRegionalSettingsButton"]')
+        currencySelect: () => cy.get('[data-test="CurrencySelect"]'),
+        saveButton: () => cy.get('[data-test="SubmitRegionalSettingsButton"]'),
+        cityFrom: () => cy.get('[data-test="PlacePickerInputPlace"]'),
     }
 
     navigateToHomepage() {
@@ -35,12 +37,24 @@ class Homepage_PO extends Base_PO {
         this.elements.languageSelect().select(languageCode);
     }
 
+    selectCurrency(currency) {
+        this.elements.currencySelect().select(currency);
+    }
+
     clickSave() {
         this.elements.saveButton().click();
     }
 
     validateFlag(language) {
         this.elements.topBarFlagButton().find('img').should('have.attr', 'title', language);
+    }
+
+    validateCityFrom(cityFrom) {
+        this.elements.cityFrom().should('contain', cityFrom);
+    }
+
+    validateCurrencyCode(currencyCode) {
+        this.elements.topBarFlagButton().find('div').last().should('contain', currencyCode);
     }
 }
 export default new Homepage_PO();
