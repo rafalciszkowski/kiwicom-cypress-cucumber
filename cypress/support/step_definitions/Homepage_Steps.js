@@ -7,9 +7,25 @@ Given('I navigate to the kiwi.com homepage', () => {
 });
 
 When('I click navbar button', () => {
-    Homepage_PO.clickOn_NavBar_Button();
+    Homepage_PO.clickOnNavBarButton();
 });
 
 Then('I should see the name of the logged in user {string}', (userName) => {
-    Homepage_PO.validate_LoggedIn_UserName(userName);
+    Homepage_PO.validateLoggedInUserName(userName);
+});
+
+When('I click flag button on topbar', () => {
+    Homepage_PO.clickOnFlagButton();
+});
+
+When('I select {string}', (languageCode) => {
+    Homepage_PO.selectLanguage(languageCode);
+});
+
+When('I click Save button', () => {
+    Homepage_PO.clickSave();
+});
+
+Then('I should be presented with {string} flag on topbar', (language) => {
+    Homepage_PO.validateFlag(language);
 });

@@ -3,9 +3,12 @@ import Base_PO from "./Base_PO";
 class Homepage_PO extends Base_PO {
 
     elements = {
-        acceptCookies_Button: () => cy.get('#cookies_accept'),
-        navBar_Button: () => cy.get('[data-test="NavBar-SideNav-Open"]'),
-        loggedIn_User: () => cy.get('[data-test="AccountMenuButton"]')
+        acceptCookiesButton: () => cy.get('#cookies_accept'),
+        navBarButton: () => cy.get('[data-test="NavBar-SideNav-Open"]'),
+        loggedInUser: () => cy.get('[data-test="AccountMenuButton"]'),
+        topBarFlagButton: () => cy.get('[data-test="RegionalSettingsButton"]'),
+        languageSelect: () => cy.get('[data-test="LanguageSelect"]'),
+        saveButton: () => cy.get('[data-test="SubmitRegionalSettingsButton"]')
     }
 
     navigateToHomepage() {
@@ -13,15 +16,31 @@ class Homepage_PO extends Base_PO {
     }
 
     acceptCookies() {
-        this.elements.acceptCookies_Button().click();
+        this.elements.acceptCookiesButton().click();
     }
 
-    clickOn_NavBar_Button() {
-        this.elements.navBar_Button().click();
+    clickOnNavBarButton() {
+        this.elements.navBarButton().click();
     }
 
-    validate_LoggedIn_UserName(userName) {
-        this.elements.loggedIn_User().should('contain', userName);
+    validateLoggedInUserName(userName) {
+        this.elements.loggedInUser().should('contain', userName);
+    }
+
+    clickOnFlagButton() {
+        this.elements.topBarFlagButton().click();
+    }
+
+    selectLanguage(languageCode) {
+        this.elements.languageSelect().select(languageCode);
+    }
+
+    clickSave() {
+        this.elements.saveButton().click();
+    }
+
+    validateFlag(language) {
+        this.elements.topBarFlagButton().find('img').should('have.attr', 'title', language);
     }
 }
 export default new Homepage_PO();
