@@ -12,7 +12,11 @@ class Homepage_PO extends Base_PO {
         saveButton: () => cy.get('[data-test="SubmitRegionalSettingsButton"]'),
         cityFrom: () => cy.get('[data-test="PlacePickerInputPlace"]'),
         selectedTripType: () => cy.get('[data-test*="SearchFormModesPicker-active"]'),
-        tripType: (typeOfTrip) => cy.get('a[data-test*="ModePopupOption"]').contains(typeOfTrip)
+        selectedCabinClass: () => cy.get('[data-test*="CabinClassField-active"]'),
+        selectedPassengersAndBags: () => cy.get('[data-test="PassengersField"]'),
+        tripType: (typeOfTrip) => cy.get('a[data-test*="ModePopupOption"] p').contains(typeOfTrip),
+        cabinClass: (cabinClass) => cy.get('a[data-test*="CabinClassPicker-filter"]').contains(cabinClass),
+        popUpButton: (button) => cy.get(`[data-test="CabinClassFooter-${button}"]`)
     }
 
     navigateToHomepage() {
@@ -59,8 +63,14 @@ class Homepage_PO extends Base_PO {
         this.elements.topBarFlagButton().find('div').last().should('contain', currencyCode);
     }
 
-    clickTripType() {
-        this.elements.selectedTripType().click();
+    clickSelectedValue(selectedValue) {
+        if (selectedValue === 'typeOfTrip') {
+            this.elements.selectedTripType().click();
+        } else if (selectedValue === 'cabinClass') {
+            this.elements.selectedCabinClass().click();
+        } else if (selectedValue === 'passengersField') {
+            this.elements.selectedPassengersAndBags().click();
+        }
     }
 
     selectTripType(typeOfTrip) {
@@ -69,6 +79,18 @@ class Homepage_PO extends Base_PO {
 
     validateTripType(typeOfTrip) {
         this.elements.selectedTripType().should('contain', typeOfTrip);
+    }
+
+    selectCabinClass(cabinClass) {
+        this.elements.cabinClass(cabinClass).click();
+    }
+
+    validateCabinClass(cabinClass) {
+        this.elements.selectedCabinClass().should('contain', cabinClass);
+    }
+
+    clickPopUpButton(button) {
+        this.elements.popUpButton(button).click();
     }
 }
 export default new Homepage_PO();

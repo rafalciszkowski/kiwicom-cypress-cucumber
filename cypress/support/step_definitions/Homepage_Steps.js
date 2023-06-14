@@ -42,8 +42,8 @@ Then('I should be presented with {string}', (currencyCode) => {
     Homepage_PO.validateCurrencyCode(currencyCode);
 });
 
-When('I click on default type of trip', () => {
-    Homepage_PO.clickTripType();
+When('I click on selected {string}', (selectedValue) => {
+    Homepage_PO.clickSelectedValue(selectedValue);
 });
 
 When('I select trip type {string}', (typeOfTrip) => {
@@ -52,4 +52,16 @@ When('I select trip type {string}', (typeOfTrip) => {
 
 Then('I should be presented with selected trip type {string}', (typeOfTrip) => {
     Homepage_PO.validateTripType(typeOfTrip);
+});
+
+When('I select cabin class {string}', (cabinClass) => {
+    Homepage_PO.selectCabinClass(cabinClass);
+});
+
+Then('I should be presented with selected cabin class {string}', (cabinClass) => {
+    Homepage_PO.validateCabinClass(cabinClass);
+});
+
+When('Click {string} button', (button) => {
+    Homepage_PO.clickPopUpButton(button);
 });
