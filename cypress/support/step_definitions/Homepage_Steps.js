@@ -41,3 +41,15 @@ Then('Default {string} should be translated to selected language', (cityFrom) =>
 Then('I should be presented with {string}', (currencyCode) => {
     Homepage_PO.validateCurrencyCode(currencyCode);
 });
+
+When('I click on default type of trip', () => {
+    Homepage_PO.clickTripType();
+});
+
+When('I select trip type {string}', (typeOfTrip) => {
+    Homepage_PO.selectTripType(typeOfTrip);
+});
+
+Then('I should be presented with selected trip type {string}', (typeOfTrip) => {
+    Homepage_PO.validateTripType(typeOfTrip);
+});

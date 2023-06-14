@@ -11,6 +11,8 @@ class Homepage_PO extends Base_PO {
         currencySelect: () => cy.get('[data-test="CurrencySelect"]'),
         saveButton: () => cy.get('[data-test="SubmitRegionalSettingsButton"]'),
         cityFrom: () => cy.get('[data-test="PlacePickerInputPlace"]'),
+        selectedTripType: () => cy.get('[data-test*="SearchFormModesPicker-active"]'),
+        tripType: (typeOfTrip) => cy.get('a[data-test*="ModePopupOption"]').contains(typeOfTrip)
     }
 
     navigateToHomepage() {
@@ -55,6 +57,18 @@ class Homepage_PO extends Base_PO {
 
     validateCurrencyCode(currencyCode) {
         this.elements.topBarFlagButton().find('div').last().should('contain', currencyCode);
+    }
+
+    clickTripType() {
+        this.elements.selectedTripType().click();
+    }
+
+    selectTripType(typeOfTrip) {
+        this.elements.tripType(typeOfTrip).click();
+    }
+
+    validateTripType(typeOfTrip) {
+        this.elements.selectedTripType().should('contain', typeOfTrip);
     }
 }
 export default new Homepage_PO();
