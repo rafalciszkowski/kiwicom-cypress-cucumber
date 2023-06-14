@@ -4,7 +4,7 @@ Feature: Change Language and Currency on kiwi.com
         Given I navigate to the kiwi.com homepage
         When I click flag button on topbar
 
-    Scenario Outline: Test the website language change
+    Scenario Outline: Test the website language and currency change
         And I select language '<languageCode>'
         And I select currency '<currency>'
         And I click Save button

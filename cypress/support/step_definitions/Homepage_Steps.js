@@ -62,6 +62,6 @@ Then('I should be presented with selected cabin class {string}', (cabinClass) =>
     Homepage_PO.validateCabinClass(cabinClass);
 });
 
-When('Click {string} button', (button) => {
+When('I click {string} button', (button) => {
     Homepage_PO.clickPopUpButton(button);
 });

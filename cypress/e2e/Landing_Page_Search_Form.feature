@@ -18,7 +18,7 @@ Feature: Validate Landing Page Search Form
     Scenario Outline: Test cabin class selection
         When I click on selected 'cabinClass'
         And I select cabin class '<cabinClass>'
-        And Click 'done' button
+        And I click 'done' button
         Then I should be presented with selected cabin class '<cabinClass>'
 
         Examples:
@@ -27,3 +27,6 @@ Feature: Validate Landing Page Search Form
             | Premium Economy |
             | Business        |
             | First Class     |
+
+    Scenario Outline: Test passengers and bags selection
+        When I click on selected 'passengersField'
