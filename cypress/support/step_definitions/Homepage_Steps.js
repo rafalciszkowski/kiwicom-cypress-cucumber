@@ -62,6 +62,18 @@ Then('I should be presented with selected cabin class {string}', (cabinClass) =>
     Homepage_PO.validateCabinClass(cabinClass);
 });
 
-When('I click {string} button', (button) => {
-    Homepage_PO.clickPopUpButton(button);
+When('I click {string} button in {string} popup', (button, type) => {
+    Homepage_PO.clickPopUpButton(button, type);
+});
+
+Then('{string} {string} value should be {string}', (option, type, value) => {
+    Homepage_PO.validatePassengersAndBagsPopupValue(option, type, value);
+});
+
+When('I click in {string} {string} row {string} button', (option, type, updateValue) => {
+    Homepage_PO.changeValueOfPassengerAndBags(option, type, updateValue);
+});
+
+Then('I should be presented with the number of {string} {string}', (number, type) => {
+    Homepage_PO.validatePassengersAndBagsLandingPageValue(number, type);
 });

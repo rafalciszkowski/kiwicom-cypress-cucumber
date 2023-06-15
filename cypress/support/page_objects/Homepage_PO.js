@@ -16,7 +16,10 @@ class Homepage_PO extends Base_PO {
         selectedPassengersAndBags: () => cy.get('[data-test="PassengersField"]'),
         tripType: (typeOfTrip) => cy.get('a[data-test*="ModePopupOption"] p').contains(typeOfTrip),
         cabinClass: (cabinClass) => cy.get('a[data-test*="CabinClassPicker-filter"]').contains(cabinClass),
-        popUpButton: (button) => cy.get(`[data-test="CabinClassFooter-${button}"]`)
+        cabinPopUpButton: (button) => cy.get(`[data-test="CabinClassFooter-${button}"]`),
+        passengersPopUpButton: (button) => cy.get(`[data-test="PassengersFieldFooter-${button}"]`),
+        passengersOptions: (option) => cy.get(`[data-test="PassengersRow-${option}"]`),
+        bagsOptions: (option) => cy.get(`[data-test="BagsPopup-${option}"]`)
     }
 
     navigateToHomepage() {
@@ -89,8 +92,40 @@ class Homepage_PO extends Base_PO {
         this.elements.selectedCabinClass().should('contain', cabinClass);
     }
 
-    clickPopUpButton(button) {
-        this.elements.popUpButton(button).click();
+    clickPopUpButton(button, type) {
+        if (type === 'cabin') {
+            this.elements.cabinPopUpButton(button).click();
+        } else if (type === 'passengers') {
+            this.elements.passengersPopUpButton(button).click();
+        }
+    }
+
+    validatePassengersAndBagsPopupValue(option, type, value) {
+        if (type === 'passengers') {
+            this.elements.passengersOptions(option).find('input').should('have.attr', 'value', value);
+        } else if (type === 'bags') {
+            this.elements.bagsOptions(option).find('input').should('have.attr', 'value', value);
+        }
+    }
+
+    changeValueOfPassengerAndBags(option, type, updateValue) {
+        if (type === 'passengers') {
+            this.elements.passengersOptions(option).find(`button[aria-label="${updateValue}"]`).click();
+        } else if (type === 'bags') {
+            this.elements.bagsOptions(option).find(`button[aria-label="${updateValue}"]`).click();
+        }
+    }
+
+    validatePassengersAndBagsLandingPageValue(number, type) {
+        if (type === 'passengers') {
+            this.elements.selectedPassengersAndBags().find('[data-test*="PassengersField-note"]').should(($el) => {
+                expect($el.get(0).innerText).to.eq(number);
+            });
+        } else if (type === 'bags') {
+            this.elements.selectedPassengersAndBags().find('div:nth-child(2) span').should(($el) => {
+                expect($el.get(0).innerText).to.eq(number);
+            });
+        }
     }
 }
 export default new Homepage_PO();
