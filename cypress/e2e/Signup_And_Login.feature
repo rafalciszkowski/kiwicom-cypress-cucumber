@@ -13,7 +13,7 @@ Feature: Signup and Login on kiwi.com
 
     Scenario: Check the possibility of registering an existing email address
         And I click Create an account link
-        And I type an 'xxxxxxxxxxxxx@gmail.com' email and 'xxxxxxxx12!' password
+        And I type an 'test.cypress@wp.pl' email and 'Test.Cypress@@' password
         And I click on the Create an account button
         Then I should be presented with warning message
 
@@ -28,8 +28,8 @@ Feature: Signup and Login on kiwi.com
     Scenario: Test login with valid credentials
         And I click Sign in button
         And I select login via 'Email' option
-        And I provide an email address 'xxxxxxxxxxxx@gmail.com'
+        And I provide an email address 'test.cypress@wp.pl'
         And I click Continue button
-        And I provide a password 'xxxxxxxxx12!'
+        And I provide a password 'Test.Cypress@@'
         And I click Sign in button in confirmation pop-up
-        Then I should see the name of the logged in user 'xxxxxxxxxx'
+        Then I should see the name of the logged in user 'test.cypress'

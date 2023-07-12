@@ -1,2 +1,6 @@
 node_modules
 screenshots
+cypress/report/cucumber-html/*
+cypress/report/cucumber-json/*
+cypress/report/cucumber-ndjson/*
+cypress/report/html-multi-report/*
