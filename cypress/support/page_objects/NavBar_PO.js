@@ -10,7 +10,7 @@ class NavBar_PO {
         submissionPopupEmail: () => cy.get('[data-test="MagicLogin-CheckEmail"] span'),
         warningMessage: () => cy.get('[data-test="MagicLogin-CreateAccountAlert"]'),
         accountOptionButton: (accountOption) => cy.get(`[data-test="MagicLogin-LoginVia${accountOption}"]`),
-        signInButton: () => cy.get('[data-test="NavBar-SideNav"] div').contains('Sign in'),
+        signInButton: () => cy.get('[data-test="TopNav-SideNav"] button div').contains('Sign in'),
         popUpEmailInput: () => cy.get('[data-test="MagicLogin-Email-Screen"] input'),
         popUpPasswordInput: () => cy.get('[data-test="MagicLogin-PasswordInput"]'),
         popUpSignInButton: () => cy.get('[name="loginPassword"] button div').contains('Sign in'),

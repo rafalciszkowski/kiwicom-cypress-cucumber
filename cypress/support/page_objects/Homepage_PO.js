@@ -4,9 +4,9 @@ class Homepage_PO extends Base_PO {
 
     elements = {
         acceptCookiesButton: () => cy.get('#cookies_accept'),
-        navBarButton: () => cy.get('[data-test="NavBar-SideNav-Open"]'),
-        loggedInUser: () => cy.get('[data-test="AccountMenuButton"]'),
-        topBarFlagButton: () => cy.get('[data-test="RegionalSettingsButton"]'),
+        navBarButton: () => cy.get('[data-test="TopNav-SideNav-Open"]'),
+        loggedInUser: () => cy.get('[data-test="TopNav-AccountMenuButton"]'),
+        topBarFlagButton: () => cy.get('[data-test="TopNav-RegionalSettingsButton"]'),
         languageSelect: () => cy.get('[data-test="LanguageSelect"]'),
         currencySelect: () => cy.get('[data-test="CurrencySelect"]'),
         saveButton: () => cy.get('[data-test="SubmitRegionalSettingsButton"]'),
@@ -119,11 +119,11 @@ class Homepage_PO extends Base_PO {
     validatePassengersAndBagsLandingPageValue(number, type) {
         if (type === 'passengers') {
             this.elements.selectedPassengersAndBags().find('[data-test*="PassengersField-note"]').should(($el) => {
-                expect($el.get(0).innerText).to.eq(number);
+                expect($el.get(0).innerText.slice(0,1)).to.eq(number);
             });
         } else if (type === 'bags') {
-            this.elements.selectedPassengersAndBags().find('div:nth-child(2) span').should(($el) => {
-                expect($el.get(0).innerText).to.eq(number);
+            this.elements.selectedPassengersAndBags().find('[data-test*="BaggageField-note"]').should(($el) => {
+                expect(+($el.get(0).innerText) + +($el.get(1).innerText)).to.eq(+number);
             });
         }
     }
