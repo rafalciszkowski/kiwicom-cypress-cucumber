@@ -13,11 +13,12 @@ class Homepage_PO extends Base_PO {
         cityFrom: () => cy.get('[data-test="PlacePickerInputPlace"]'),
         selectedTripType: () => cy.get('[data-test*="SearchFormModesPicker-active"]'),
         selectedCabinClass: () => cy.get('[data-test*="CabinClassField-active"]'),
-        selectedPassengersAndBags: () => cy.get('[data-test="PassengersField"]'),
+        selectedPassengers: () => cy.get('[data-test="PassengersButton"]'),
+        selectedBags: () => cy.get('[data-test="BaggageButton"]'),
         tripType: (typeOfTrip) => cy.get('a[data-test*="ModePopupOption"] p').contains(typeOfTrip),
         cabinClass: (cabinClass) => cy.get('a[data-test*="CabinClassPicker-filter"]').contains(cabinClass),
         cabinPopUpButton: (button) => cy.get(`[data-test="CabinClassFooter-${button}"]`),
-        passengersPopUpButton: (button) => cy.get(`[data-test="PassengersFieldFooter-${button}"]`),
+        passengersPopUpButton: (button) => cy.get(`[data-test="PassengersAndBagsFieldFooter-${button}"]`),
         passengersOptions: (option) => cy.get(`[data-test="PassengersRow-${option}"]`),
         bagsOptions: (option) => cy.get(`[data-test="BagsPopup-${option}"]`)
     }
@@ -72,7 +73,7 @@ class Homepage_PO extends Base_PO {
         } else if (selectedValue === 'cabinClass') {
             this.elements.selectedCabinClass().click();
         } else if (selectedValue === 'passengersField') {
-            this.elements.selectedPassengersAndBags().click();
+            this.elements.selectedPassengers().click();
         }
     }
 
@@ -118,11 +119,11 @@ class Homepage_PO extends Base_PO {
 
     validatePassengersAndBagsLandingPageValue(number, type) {
         if (type === 'passengers') {
-            this.elements.selectedPassengersAndBags().find('[data-test*="PassengersField-note"]').should(($el) => {
-                expect($el.get(0).innerText.slice(0,1)).to.eq(number);
+            this.elements.selectedPassengers().find('[data-test*="PassengersField-note"]').should(($el) => {
+                expect($el.get(0).innerText.slice(0, 1)).to.eq(number);
             });
         } else if (type === 'bags') {
-            this.elements.selectedPassengersAndBags().find('[data-test*="BaggageField-note"]').should(($el) => {
+            this.elements.selectedBags().find('[data-test*="BaggageField-note"]').should(($el) => {
                 expect(+($el.get(0).innerText) + +($el.get(1).innerText)).to.eq(+number);
             });
         }

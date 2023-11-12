@@ -7,7 +7,8 @@
     "multiReport": "node cucumber-html-report.js",
     "singup-and-login-headed-chrome": "cypress run --headed --browser chrome --spec 'cypress/e2e/Signup_And_Login.feature' && npm run multiReport",
     "allTests": "cypress run --headed --browser chrome --spec 'cypress/e2e/*.feature' && npm run multiReport",
-    "smoke-pack-headed-chrome": "cypress run -e TAGS=\"@smoke\" --headed --browser chrome && npm run multiReport"
+    "smoke-pack-headed-chrome": "cypress run -e TAGS=\"@smoke\" --headed --browser chrome && npm run multiReport",
+    "allTestsCypressCloud": "npx cypress run --record --key 0b708f42-307f-4282-92fc-d73821bf7a56"
   },
   "keywords": [],
   "author": "",
