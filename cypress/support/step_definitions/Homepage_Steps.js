@@ -3,9 +3,7 @@ import Homepage_PO from "../page_objects/Homepage_PO";
 
 Given('I navigate to the kiwi.com homepage', () => {
     Homepage_PO.navigateToHomepage();
-    if (Cypress.config('isInteractive')) {
-        Homepage_PO.acceptCookies();
-    }
+    Homepage_PO.acceptCookies();
 });
 
 When('I click navbar button', () => {
