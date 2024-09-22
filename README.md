@@ -1,5 +1,29 @@
-# kiwicom-cypress-cucumber
+# Kiwicom Cypress Cucumber
 
-1. This is my first project written in Cypress+Cucumber immediately after completing a course on Udemy
-2. Several scenarios related to logging into the "kiwi.com" application are being tested (which I have been using frequently lately to find a flight at a good price for my vacation in Greece :))
-2. The main goal was for all scenarios to pass without error with a fairly loose approach to the DRY principle
+## Project Description
+This project contains end-to-end tests for the Kiwicom application, written using Cypress and Cucumber. The tests are written in Gherkin language, making them easy to understand and maintain.
+
+## Project Structure
+- `cypress/`: Cypress configuration and tests.
+- `features/`: Gherkin files containing test scenarios.
+
+## Requirements
+- Node.js (version 12 or higher)
+- npm (version 6 or higher)
+
+## Installation
+1. Clone the repository:
+   git clone https://github.com/rafalciszkowski/kiwicom-cypress-cucumber.git
+
+2. Navigate to the project directory:
+   cd kiwicom-cypress-cucumber
+
+3. Install dependenciesL
+   npm install
+
+## Running Tests
+1. Open Cypress:
+   npx cypress open
+
+2. Run tests in headless mode:
+   npx cypress run
