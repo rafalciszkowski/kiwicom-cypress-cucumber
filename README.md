@@ -13,19 +13,24 @@ This project contains end-to-end tests for the Kiwicom application, written usin
 
 ## Installation
 1. Clone the repository:
+   ```bash
    git clone https://github.com/rafalciszkowski/kiwicom-cypress-cucumber.git
 
 3. Navigate to the project directory:
+   ```bash
    cd kiwicom-cypress-cucumber
 
-4. Install dependenciesL
+5. Install dependencies:
+   ```bash
    npm install
 
 ## Running Tests
 1. Open Cypress:
+   ```bash
    npx cypress open
 
-2. Run tests in headless mode:
+3. Run tests in headless mode:
+   ```bash
    npx cypress run
 
 ## Configuration
