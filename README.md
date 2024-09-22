@@ -15,6 +15,7 @@ This project contains end-to-end tests for the Kiwicom application, written usin
 1. Clone the repository:
   ```bash
    git clone https://github.com/rafalciszkowski/kiwicom-cypress-cucumber.git
+  ```bash
 
 3. Navigate to the project directory:
    cd kiwicom-cypress-cucumber
