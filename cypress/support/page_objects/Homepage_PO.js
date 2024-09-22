@@ -15,8 +15,9 @@ class Homepage_PO extends Base_PO {
         selectedCabinClass: () => cy.get('[data-test*="CabinClassField-active"]'),
         selectedPassengers: () => cy.get('[data-test="PassengersButton"]'),
         selectedBags: () => cy.get('[data-test="BaggageButton"]'),
-        tripType: (typeOfTrip) => cy.get('a[data-test*="ModePopupOption"] p').contains(typeOfTrip),
+        tripType: (typeOfTrip) => cy.contains(typeOfTrip),
         cabinClass: (cabinClass) => cy.get('a[data-test*="CabinClassPicker-filter"]').contains(cabinClass),
+        outerElement: () => cy.get('[class *= "absolute z-[3] w-full"]'),
         cabinPopUpButton: (button) => cy.get(`[data-test="CabinClassFooter-${button}"]`),
         passengersPopUpButton: (button) => cy.get(`[data-test="PassengersAndBagsFieldFooter-${button}"]`),
         passengersOptions: (option) => cy.get(`[data-test="PassengersRow-${option}"]`),
@@ -127,6 +128,10 @@ class Homepage_PO extends Base_PO {
                 expect(+($el.get(0).innerText) + +($el.get(1).innerText)).to.eq(+number);
             });
         }
+    }
+
+    clickOuterElement() {
+        this.elements.outerElement().click();
     }
 }
 export default new Homepage_PO();

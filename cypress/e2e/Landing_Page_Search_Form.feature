@@ -18,7 +18,8 @@ Feature: Validate Landing Page Search Form
     Scenario Outline: Test cabin class selection
         When I click on selected 'cabinClass'
         And I select cabin class '<cabinClass>'
-        And I click 'done' button in 'cabin' popup
+        # And I click 'done' button in 'cabin' popup
+        And I click outer element
         Then I should be presented with selected cabin class '<cabinClass>'
 
         Examples:
@@ -42,12 +43,14 @@ Feature: Validate Landing Page Search Form
         And I click in 'adults' 'passengers' row 'increment' button
         And I click in 'children' 'passengers' row 'increment' button
         And I click in 'infants' 'passengers' row 'increment' button
-        And I click 'done' button in 'passengers' popup
+        # And I click 'done' button in 'passengers' popup
+        And I click outer element
         Then I should be presented with the number of '4' 'passengers'
 
     Scenario: Test selection of bags number
         When I click on selected 'passengersField'
         And I click in 'cabin' 'bags' row 'increment' button
         And I click in 'checked' 'bags' row 'increment' button
-        And I click 'done' button in 'passengers' popup
+        # And I click 'done' button in 'passengers' popup
+        And I click outer element
         Then I should be presented with the number of '2' 'bags'

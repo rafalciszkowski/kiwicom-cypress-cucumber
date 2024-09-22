@@ -77,3 +77,7 @@ When('I click in {string} {string} row {string} button', (option, type, updateVa
 Then('I should be presented with the number of {string} {string}', (number, type) => {
     Homepage_PO.validatePassengersAndBagsLandingPageValue(number, type);
 });
+
+When('I click outer element', () => {
+    Homepage_PO.clickOuterElement();
+});

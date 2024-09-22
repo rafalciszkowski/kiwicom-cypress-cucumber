@@ -32,4 +32,4 @@ Feature: Signup and Login on kiwi.com
         And I click Continue button
         And I provide a password 'Test.Cypress@@'
         And I click Sign in button in confirmation pop-up
-        Then I should see the name of the logged in user 'test.cypress'
+        Then I should see the name of the logged in user 'XXXXtest.cypress'
