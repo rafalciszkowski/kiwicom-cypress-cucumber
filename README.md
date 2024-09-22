@@ -25,13 +25,13 @@ This project contains end-to-end tests for the Kiwicom application, written usin
    npm install
 
 ## Running Tests
-1. Open Cypress:
+1. Open Cypress (select Chrome):
    ```bash
    npx cypress open
 
 3. Run tests in headless mode:
    ```bash
-   npx cypress run
+   npx cypress run --browser chrome
 
 ## Configuration
 The `cypress.json` file contains the basic Cypress settings. You can customize it to suit your needs.
